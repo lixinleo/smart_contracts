@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
-contract MyContract {
+contract ExampleBoolean {
     bool public myBool;
 
     function setMyBool(bool _myBool) public {
