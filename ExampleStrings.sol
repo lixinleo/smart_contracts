@@ -2,6 +2,7 @@
 pragma solidity ^0.8.14;
 contract ExampleStrings {
     string public myString = "hello world";
+    bytes public myBytes = "hello world";
 
     function setMyString(string memory _myString) public {
         myString = _myString;
