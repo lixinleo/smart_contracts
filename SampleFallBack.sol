@@ -8,4 +8,9 @@ contract SampleFallBack {
         lastValueSent = msg.value;
         lastFunctionCalled = "receive";
     }
+
+    fallback() external payable {
+        lastValueSent = msg.value;
+        lastFunctionCalled = "fallback";
+    }
 }
