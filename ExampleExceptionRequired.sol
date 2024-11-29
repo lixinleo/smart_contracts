@@ -9,9 +9,8 @@ contract ExampleExceptionRequired {
     }
 
     function withdraw(address payable _to, uint _amount) public {
-        if (_amount < received[msg.sender]) {
-            received[msg.sender] -= _amount;
-            _to.transfer(_amount);
-        }
+        require(_amount <= received[msg.sender], "Not enough tokens");
+        received[msg.sender] -= _amount;
+        _to.transfer(_amount);
     }
 }
