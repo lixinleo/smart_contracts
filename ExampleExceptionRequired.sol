@@ -2,14 +2,16 @@
 pragma solidity 0.7.0;
 
 contract ExampleExceptionRequired {
-    mapping(address => uint) public received;
+    mapping(address => uint8) public received;
 
     function deposit() public payable {
-        received[msg.sender] += msg.value;
+        assert(msg.value == uint8(msg.value));
+        received[msg.sender] += uint8(msg.value);
+        assert(received[msg.sender] >= uint8(msg.value));
     }
 
-    function withdraw(address payable _to, uint _amount) public {
-        require(_amount <= received[msg.sender], "Not enough tokens");
+    function withdraw(address payable _to, uint8 _amount) public {
+        require(_amount < received[msg.sender], "Not enough tokens");
         received[msg.sender] -= _amount;
         _to.transfer(_amount);
     }
